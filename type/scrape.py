@@ -4,8 +4,6 @@ import time
 import csv
 import datetime
 
-# keyword = 'Laravel' #キーワード
-# key = 'cauhcr3rcyngf4hwvnuj' #都道府県(大阪) key = 'fsv0rltm6p1g8pvv6vei'（東京）
 
 csvlist = []
 url_index = 'https://type.jp/job-1'
