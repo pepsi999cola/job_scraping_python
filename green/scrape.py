@@ -11,9 +11,12 @@ csvlist = []
 url_index = 'https://www.green-japan.com'
 id = 1
 
+headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:58.0) Gecko/20100101 Firefox/58.0'}
+headers['referer'] = 'https://www.google.co.jp'
+
 for page in range(1,10):
     url = f'https://www.green-japan.com/search_key/01?key={key}&keyword={keyword}&page={page}'
-    res = requests.get(url)
+    res = requests.get(url,headers)
     time.sleep(5)
 
     soup = BeautifulSoup(res.text, 'html.parser')
