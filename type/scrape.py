@@ -34,7 +34,7 @@ for page in range(1,15):
         break
 
 today = datetime.date.today()
-with open(today.strftime('%Y%m%d') + '.csv', 'w') as file:
+with open(today.strftime('%Y%m%d') +  '_type_' + '.csv', 'w') as file:
     writer = csv.writer(file, lineterminator='\n')
     writer.writerows(csvlist)
     

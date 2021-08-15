@@ -38,7 +38,7 @@ for page in range(0, 5):
         break
 # print(csvlist)
 today = datetime.date.today()
-with open(today.strftime('%Y%m%d')+ "indeed" + keyword + Work_location + '.csv', 'w') as file:
+with open(today.strftime('%Y%m%d')+ '_indeed_' + keyword + Work_location + '.csv', 'w') as file:
     writer = csv.writer(file, lineterminator='\n')
     writer.writerows(csvlist)
 

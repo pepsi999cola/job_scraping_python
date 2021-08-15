@@ -38,6 +38,6 @@ for page in range(1,10):
         break
 
 today = datetime.date.today()
-with open(today.strftime('%Y%m%d') + keyword + '.csv', 'w') as file:
+with open(today.strftime('%Y%m%d') + '_green_' + keyword + '.csv', 'w') as file:
     writer = csv.writer(file, lineterminator='\n')
     writer.writerows(csvlist)
