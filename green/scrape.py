@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import csv
 import datetime
+import pandas as pd
 
 keyword = 'Laravel' #キーワード
 key = 'cauhcr3rcyngf4hwvnuj' #都道府県(大阪) key = 'fsv0rltm6p1g8pvv6vei'（東京）
@@ -31,13 +32,17 @@ for page in range(1,10):
 
     for (job_card, job_salary, job_card_head, job_url) in zip(job_cards, job_salarys, job_card_heads, job_urls):
         print([id, job_card.text,job_salary.li.text.replace("\n"," ").replace(" ",""), job_card_head.text, url_index + job_url.get('href')])
-        csvlist.append([id, job_card.text, job_salary.li.text.replace("\n"," ").replace(" ",""), job_card_head.text, url_index + job_url.get('href')])
+        csvlist.append([job_card.text, job_salary.li.text.replace("\n"," ").replace(" ",""), job_card_head.text, url_index + job_url.get('href')])
         id += 1
     print(str(page) + 'ページ目を取得しました')
     if len(job_cards) != 10:
         break
 
 today = datetime.date.today()
-with open(today.strftime('%Y%m%d') + '_green_' + keyword + '.csv', 'w') as file:
+with open(today.strftime('%Y%m%d') + '_green_' + keyword + '.csv', 'w', encoding='utf-8-sig') as file:
     writer = csv.writer(file, lineterminator='\n')
     writer.writerows(csvlist)
+
+columns1 = ["company", "salary", "title"]
+df = pd.DataFrame(data=csvlist, columns=columns1)
+print(df.duplicated(subset=['company']).sum())
